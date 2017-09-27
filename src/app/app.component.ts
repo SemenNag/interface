@@ -18,7 +18,7 @@ interface QtyPack {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  displayRequestDialog = true;
+  displayRequestDialog = false;
 
   logistics: LogisticPack[] = [
     {deliveryWindow: [new Date(2017, 0, 1, 0, 0, 0, 0), new Date(2017, 0, 3, 0, 0, 0, 0)]},
@@ -107,5 +107,9 @@ export class AppComponent {
   getLabel(packValue) {
     const index = this.packTypes.findIndex(el => el.value === packValue);
     return this.packTypes[index].label;
+  }
+
+  close() {
+    this.displayRequestDialog = false;
   }
 }

@@ -92,7 +92,8 @@
     <i class="fa fa-2x fa-file-excel-o pointer"></i>
   </div>
 </div>
-<p-dialog [header]="'Запрос на изменения'"
+<p-dialog
+          [header]="'Запрос на изменения'"
           [draggable]="false"
           [width]="900"
           [resizable]="true"
@@ -170,7 +171,7 @@
     </p-fieldset>
   </div>
   <p-footer>
-    <button class="m-r-1" pButton type="button" label="OK"></button>
-    <button class="m-r-1" pButton type="button" label="Cancel"></button>
+    <button class="m-r-1" pButton type="button" (click)="close()" label="OK"></button>
+    <button class="m-r-1" pButton type="button" (click)="close()" label="Cancel"></button>
   </p-footer>
 </p-dialog>
