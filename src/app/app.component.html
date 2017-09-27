@@ -2,26 +2,84 @@
   <div class="header">
   </div>
   <div class="content">
-    <p-dataTable [value]="quants">
+    <p-dataTable
+      [resizableColumns]="true"
+      [editable]="true"
+      [selectable]="true"
+      [selectionMode]="'multiple'"
+      [(selection)]="selectedQuants"
+      [dataKey]="'id'"
+      [value]="quants">
       <p-headerColumnGroup>
         <p-row>
-          <p-column header="Окна передачи" colspan="2"></p-column>
-          <p-column header="Общее количество" colspan="2"></p-column>
-        </p-row>
-        <p-row>
-          <p-column header="Номер поставки"></p-column>
-          <p-column header="Окно поставки"></p-column>
-          <p-column header="Цветоразмер поставщика"></p-column>
-          <p-column header="Общее количество"></p-column>
+          <p-column
+            [style]="{'width': '55px'}"
+          ></p-column>
+          <p-column
+            [style]="{'width': '255px'}"
+            [header]="'Информация'"
+          ></p-column>
+          <p-column
+            [style]="{'width': '255px'}"
+            [header]="'Порт'"
+          ></p-column>
+          <p-column
+            [header]="'Окна передачи'"
+          ></p-column>
+          <p-column
+            [style]="{'width': '275px'}"
+            [header]="'Кратности'"
+          ></p-column>
         </p-row>
       </p-headerColumnGroup>
-
-      <p-column field="brand"></p-column>
-      <p-column field="lastYearSale"></p-column>
-      <p-column field="thisYearSale"></p-column>
-      <p-column field="lastYearProfit"></p-column>
+      <p-column [selectionMode]="'multiple'"
+      ></p-column>
+      <p-column
+      >
+        <ng-template let-col let-data="rowData" pTemplate="body">
+          <div>
+            {{data.brand}}&nbsp;&mdash;&nbsp;{{data.model}}
+          </div>
+          <div>
+            {{data.price}}&nbsp;<i class="fa fa-dollar"></i>
+          </div>
+        </ng-template>
+      </p-column>
+      <p-column
+        field="point"
+      >
+      </p-column>
+      <p-column
+        field="deliveryWindow"
+      >
+        <ng-template let-col let-windows="rowData" pTemplate="body">
+          <div *ngFor="let delWindow of windows['deliveryWindow']">
+            <span>
+              {{delWindow.deliveryNumber}}
+              :&nbsp;
+              {{delWindow.start}}
+              &nbsp;&mdash;&nbsp;
+              {{delWindow.end}}&nbsp;
+              ({{delWindow.qty}})
+            </span>
+          </div>
+        </ng-template>
+      </p-column>
+      <p-column
+      >
+        <ng-template let-col let-mults="rowData" pTemplate="body">
+          <div *ngFor="let delWindow of mults['multiplicity']">
+            <span>
+              {{delWindow.packType}}
+              :&nbsp;
+              {{delWindow.mult}}
+              &nbsp;&mdash;&nbsp;
+              {{delWindow.qty}}
+            </span>
+          </div>
+        </ng-template>
+      </p-column>
     </p-dataTable>
   </div>
-  <div class="footer">
-  </div>
+  <div class="footer" (click)="show()"></div>
 </div>

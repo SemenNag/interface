@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {DataTableModule, SharedModule} from 'primeng/primeng'
+import {SpinnerModule, DropdownModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 import { AppComponent } from './app.component';
@@ -11,8 +13,14 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     DataTableModule,
+    DropdownModule,
+    SpinnerModule,
     SharedModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [],
   bootstrap: [AppComponent]
