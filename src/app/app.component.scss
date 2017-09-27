@@ -1,4 +1,41 @@
+$topFrameSize: 60px;
+$bottomFrameSize: 30px;
+$backgroundColor: #005aab;
+
 .root {
   width: 100vw;
   height: 100vh;
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $topFrameSize;
+    background-color: $backgroundColor;
+    z-index: 2;
+  }
+
+  .content {
+    z-index: 1;
+    padding-bottom: $bottomFrameSize;
+    padding-top: $topFrameSize;
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .footer {
+    z-index: 2;
+    width: 100%;
+    height: $bottomFrameSize;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $backgroundColor;
+  }
 }
