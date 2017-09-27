@@ -5,6 +5,12 @@ interface LogisticPack {
   deliveryWindow: Date[]
 }
 
+interface QtyPack {
+  packType: number,
+  qty: number,
+  boxQty: number
+}
+
 
 @Component({
   selector: 'app-root',
@@ -19,6 +25,20 @@ export class AppComponent {
     {deliveryWindow: [new Date(2017, 10, 21, 0, 0, 0, 0), new Date(2017, 10, 23, 0, 0, 0, 0)]},
   ];
 
+  blockedQty = true;
+  blockedLogistic = true;
+
+  qtys: QtyPack[] = [
+    {packType: 1, qty: 200, boxQty: 3},
+    {packType: 2, qty: 500, boxQty: 6},
+    {packType: 3, qty: 800, boxQty: 9}
+  ];
+
+  packTypes = [
+    {label: 'Caselot', value: 1},
+    {label: 'Multipack', value: 2},
+    {label: 'Mono', value: 3},
+  ];
 
   cities = [
     {label: 'Shanghai', value: 1},
@@ -82,9 +102,10 @@ export class AppComponent {
     }
   ];
 
-  selectedQuants = []
+  selectedQuants = [];
 
-  show() {
-    console.log(JSON.stringify(this.quants));
+  getLabel(packValue) {
+    const index = this.packTypes.findIndex(el => el.value === packValue);
+    return this.packTypes[index].label;
   }
 }

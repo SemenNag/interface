@@ -7,10 +7,12 @@ import {
   DialogModule,
   DropdownModule,
   FieldsetModule,
+  CheckboxModule,
   InputTextareaModule,
   PanelModule,
   RadioButtonModule,
   SharedModule,
+  BlockUIModule,
   SpinnerModule
 } from 'primeng/primeng'
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -30,6 +32,8 @@ import {AppComponent} from './app.component';
     RadioButtonModule,
     CalendarModule,
     DropdownModule,
+    BlockUIModule,
+    CheckboxModule,
     PanelModule,
     ButtonModule,
     InputTextareaModule,
