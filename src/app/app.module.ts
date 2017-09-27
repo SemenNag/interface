@@ -1,11 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {DataTableModule, SharedModule} from 'primeng/primeng'
-import {SpinnerModule, DropdownModule} from 'primeng/primeng';
+import {
+  ButtonModule,
+  CalendarModule,
+  DataTableModule,
+  DialogModule,
+  DropdownModule,
+  FieldsetModule,
+  InputTextareaModule,
+  PanelModule,
+  RadioButtonModule,
+  SharedModule,
+  SpinnerModule
+} from 'primeng/primeng'
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +26,15 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     DataTableModule,
+    DialogModule,
+    RadioButtonModule,
+    CalendarModule,
     DropdownModule,
+    PanelModule,
+    ButtonModule,
+    InputTextareaModule,
+    FieldsetModule,
+
     SpinnerModule,
     SharedModule
   ],

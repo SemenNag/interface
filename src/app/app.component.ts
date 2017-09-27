@@ -1,11 +1,32 @@
 import { Component } from '@angular/core';
 
+
+interface LogisticPack {
+  deliveryWindow: Date[]
+}
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  displayRequestDialog = true;
+
+  logistics: LogisticPack[] = [
+    {deliveryWindow: [new Date(2017, 0, 1, 0, 0, 0, 0), new Date(2017, 0, 3, 0, 0, 0, 0)]},
+    {deliveryWindow: [new Date(2017, 10, 21, 0, 0, 0, 0), new Date(2017, 10, 23, 0, 0, 0, 0)]},
+  ];
+
+
+  cities = [
+    {label: 'Shanghai', value: 1},
+    {label: 'Chickago', value: 2},
+    {label: 'Moscow', value: 3},
+    {label: 'London', value: 4},
+  ];
+
   quants = [
     {
       brand: 'Demix',

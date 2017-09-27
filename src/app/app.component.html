@@ -81,5 +81,50 @@
       </p-column>
     </p-dataTable>
   </div>
-  <div class="footer" (click)="show()"></div>
+  <div class="footer">
+    <button class="m-r-1" pButton type="button" label="Принять"></button>
+    <button class="m-r-1"
+            pButton
+            type="button"
+            (click)="displayRequestDialog = !displayRequestDialog"
+            label="Запрос на изменения"></button>
+    <button class="m-r-1" pButton type="button" label="Комментарии"></button>
+    <i class="fa fa-2x fa-file-excel-o pointer"></i>
+  </div>
 </div>
+<p-dialog [header]="'Запрос на изменения'"
+          [draggable]="false"
+          [width]="900"
+          [resizable]="true"
+          [modal]="true"
+          [(visible)]="displayRequestDialog">
+  <div class="dialog-root">
+    <p-fieldset [legend]="'Логистика'" [toggleable]="true">
+      <div class="ui-g-6">
+        <h4 class="no-wm">Порт</h4>
+        <p-dropdown [options]="cities" [filter]="true" [style]="{'width': '100%'}"></p-dropdown>
+        <div class="m-t-1"></div>
+        <textarea pInputTextarea [placeholder]="'Комментарий'" autoResize="true"></textarea>
+      </div>
+      <div class="ui-g-6">
+        <p-dataTable [value]="logistics" [editable]="true">
+          <p-column field="deliveryWindow" header="Окна" [editable]="true" [style]=" {'overflow':'visible' }">
+            <ng-template let-col let-window="rowData" pTemplate="body">
+              {{window[col.field][0]|date:'dd.MM.y'}} &mdash; {{window[col.field][1]|date:'dd.MM.y'}}
+            </ng-template>
+            <ng-template let-col let-window="rowData" pTemplate="editor">
+              <p-calendar [(ngModel)]="window[col.field]" selectionMode="range" readonlyInput="true" appendTo="body"></p-calendar>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+      </div>
+    </p-fieldset>
+    <p-fieldset [legend]="'Кратности'" [toggleable]="true">
+
+      <p-radioButton name="groupname" value="val1" label="Caselot"></p-radioButton>
+      <p-radioButton name="groupname" value="val2" label="Multipack"></p-radioButton>
+      <p-radioButton name="groupname" value="val2" label="Mono"></p-radioButton>
+      <textarea pInputTextarea [placeholder]="'Комментарий'"></textarea>
+    </p-fieldset>
+  </div>
+</p-dialog>
